@@ -10,7 +10,7 @@ def index(request):
 
 
 def create_profile(request):
-    return render(request, 'index.html')
+    return render(request, 'create_profile.html')
 
 
 def getProfiles(request):
