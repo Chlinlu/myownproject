@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>List of Live Data</h1>
+    <ul id="display-data">
+    
+    </ur>
+{% endblock %}
+
+{% block script %}
+$(document).ready(function(){
+   
+    setInterval(function(){
+        $.ajax({
+            type:'GET',
+            url : "{% url 'getProfiles' %}",  
+            success: function(response){
+                $("#display-data").empty();
+                for(var key in response.profiles)
+                {
+                    var temp = "<li>"+response.profiles[key].name+"</li>";
+                    $("#display-data").append(temp);
+                }
+            }
+        });
+    },1000);
+        
+});
+{% endblock %}
+
